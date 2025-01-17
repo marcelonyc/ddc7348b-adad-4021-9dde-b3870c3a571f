@@ -9,12 +9,13 @@ permissions:
   # [Mandatory If using OIDC authentication protocol instead of JF_ACCESS_TOKEN]
   id-token: write
 jobs:
-  frogbot:
+  scan-pull-request:
     runs-on: ubuntu-latest
+    environment: frogbot
     strategy:
       matrix:
         # The repository scanning will be triggered periodically on the following branches.
-        branch: ["no-poetry"]
+        branch: ["main", "dev" ]
     steps:
       - uses: jfrog/frogbot@v2.24.0
         env:
@@ -23,5 +24,7 @@ jobs:
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JF_GIT_BASE_BRANCH: ${{ matrix.branch }}
           JF_URL: https://${{ vars.JF_URL }}
+          JF_INCLUDE_ALL_VULNERABILITIES: "TRUE"
+          JF_FAIL: "TRUE"
         with:
           oidc-provider-name: dvr-game-github
