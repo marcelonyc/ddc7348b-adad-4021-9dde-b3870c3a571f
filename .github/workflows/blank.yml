@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         # The repository scanning will be triggered periodically on the following branches.
-        branch: ["no-poetry"]
+        branch: ["main", "dev" ]
     steps:
       - uses: jfrog/frogbot@v2.24.0
         env:
